@@ -23,7 +23,7 @@ public:
         CheckingTime(hours, minutes, seconds);
     }
 
-    // Для прибавления или вычитания времени к или от другому времени
+    // Для прибовления или вычитания времени к или от другому времени
     int To_Time_Other() {
         int a2b2c2 = 0;
         a2b2c2 = CheckingTime(hours, minutes, seconds);
@@ -50,14 +50,14 @@ public:
 
     // Прибавление времени
     Time Add(Time& other) {
-        Time S = Result(other.To_Time_Other() + To_Time_Other());   
-        return S;
+        Result(other.To_Time_Other() + To_Time_Other());   
+        return Result(other.To_Time_Other() + To_Time_Other());
     }
 
     // Вычитание времени
     Time Sub(Time& other) {
-        Time S = Result(To_Time_Other() - other.To_Time_Other());
-        return S;
+        Result(To_Time_Other() - other.To_Time_Other());
+        return Result(To_Time_Other() - other.To_Time_Other());
     }
 
 
@@ -74,7 +74,7 @@ public:
         bool marker5 = false;
         bool marker6 = false;
         bool marker7 = false;
-
+        label:
         if (a1 == 0) {
             a1 = 24;
            marker1 = true;
@@ -133,22 +133,38 @@ public:
         else {
             marker2 = false;
         }
+
+        if (a1 >= 24 || b1 >= 60 || c1 >= 60 || a1 < 0 || b1 < 0 || c1 < 0) {
+            goto label;
+        }
+
         if (marker2 == true || marker3 == true || marker4 == true || marker5 == true || marker6 == true || marker7 == true) {
             wcout << L"\n-не корректное отображение времени, перерасчитанное время = ";
             printf("%02d", a1);
-            cout << ":";
+            cout << "::";
             printf("%02d", b1);
-            cout << ":";
+            cout << "::";
             printf("%02d", c1);
-            cout << " ";
             marker1 == false;
             int a1b1c1 = a1 * 10000 + b1 * 100 + c1 * 1;
+
+            marker0 = false;
+            marker1 = false;
+            marker2 = false;
+            marker3 = false;
+            marker4 = false;
+            marker5 = false;
+            marker6 = false;
+            marker7 = false;
+
+
             return a1b1c1;
         }
         else {
             int a1b1c1 = a1 * 10000 + b1 * 100 + c1 * 1;
             return a1b1c1;
         }
+
     };
 
 // [out] time-Время, в которое будет считана информация
@@ -189,7 +205,7 @@ int main() {
     Time t1_time;
     wcout << L" - \"HH:MM:SS\:";
     cin >> t1_time;
-    wcout << L"Введите второе время \"HH:MM:SS\" через пробел или поочереди: " << endl;
+    wcout << L"\n\nВведите второе время \"HH:MM:SS\" через пробел или поочереди: " << endl;
 
     Time t2_time;
     wcout << L" - \"HH:MM:SS\:";
