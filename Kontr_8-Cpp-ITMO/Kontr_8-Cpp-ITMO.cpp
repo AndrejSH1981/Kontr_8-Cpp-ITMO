@@ -75,41 +75,32 @@ public:
         bool marker6 = false;
         bool marker7 = false;
         label:
-        if (a1 == 0) {
-            a1 = 24;
-           marker1 = true;
-        }
-        if (b1 == 0) {
-            b1 = 60;
-            marker1 = true;
-        }
-        if (c1 == 0) {
-            c1 = 60;
-            marker1 = true;
-        }
-        if (a1 < 0) {
-            a1 = 24 - a1;
-            marker5 = true;
-        }
-        else {
-            marker5 = false;
-        }
-        if (b1 < 0) {
-            a1 = a1 - 1;
-            b1 = 60 + b1;
-            marker6 = true;
-        }
-        else {
-            marker6 = false;
-        }
-        if (c1 < 0) {
+    if (c1 < 0) {
             b1 = b1 - 1;
-            c1 = 60 + c1;
+            c1 = 60 - abs(c1);
             marker7 = true;
         }
         else {
             marker7 = false;
         }
+
+        if (b1 < 0) {
+            a1 = a1 - 1;
+            b1 = 60 - abs(b1);
+            marker6 = true;
+        }
+        else {
+            marker6 = false;
+        }
+
+        if (a1 < 0) {
+            a1 = 24 - abs(a1);
+            marker5 = true;
+        }
+        else {
+            marker5 = false;
+        }
+
         if (c1 >= 60) {
             b1 = b1 + 1;
             c1 = c1 - 60;
@@ -118,6 +109,7 @@ public:
         else {
             marker4 = false;
         }
+
         if (b1 >= 60) {
             a1 = a1 + 1;
             b1 = b1 - 60;
