@@ -23,7 +23,7 @@ public:
         CheckingTime(hours, minutes, seconds);
     }
 
-    // Для преобразование или вычитания времени к или от другому времени
+    // Для прибавления или вычитания времени к или от другому времени
     int To_Time_Other() {
         int a2b2c2 = 0;
         a2b2c2 = CheckingTime(hours, minutes, seconds);
